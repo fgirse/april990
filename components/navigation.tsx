@@ -21,7 +21,7 @@ export default function Navbar() {
   const [wohinOpen, setWohinOpen] = useState(false);
 
   return (
-    <nav className="relative overflow-hidden">
+    <nav className="relative overflow-hiddenh-[300px]">
       <div
         className="absolute inset-0 opacity-90"
         style={{ backgroundImage: "url('/Wood4.svg')", backgroundSize: 'cover', backgroundPosition: 'center' }}         
@@ -32,7 +32,7 @@ export default function Navbar() {
           href="/"
           className="flex items-center gap-2 font-semibold text-lg text-white hover:text-white transition-colors"
         >
-          <Image src={Logo} alt="LogoNeu" width={120} height={80} className=" md:w-20 md:h-16   lg:w-28 lg:h-24 lg:mt-7 lg:mb-2" />
+          <Image src={Logo} alt="LogoNeu" width={120} height={80} className=" md:w-20 md:h-16 lg:w-28 lg:h-24 lg:mt-7 lg:mb-2" />
           
         </Link>
 
@@ -40,7 +40,7 @@ export default function Navbar() {
         <div className="hidden items-center justify-between md:flex">
           <Link
             href="/"
-            className="flex items-center gap-8 text-2xl uppercase font-medium text-white hover:text-white transition-colors"
+            className="flex items-center gap-2 text-2xl uppercase font-medium text-white hover:bg-white transition-colors"
           >
            <Image src={Bulleye} width={40} height={40} alt={""}  />
             Home
@@ -52,7 +52,7 @@ export default function Navbar() {
              <Image src={Bulleye} width={40} height={40} alt={""}  />
               About
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="bg-white w-52">
+            <DropdownMenuContent align="start" className="bg-white border-e-2 w-52">
               <DropdownMenuItem asChild>
                 <Link href="/about/team" className="flex items-center gap-2">
                  <Image src={Bulleye} width={40} height={40} alt={""}  />
@@ -83,7 +83,7 @@ export default function Navbar() {
             <DropdownMenuContent align="start" className="bg-white w-52">
               <DropdownMenuItem asChild>
                 <Link href="/drinks/coffee" className="flex items-center gap-2">
-                 <Image src={Bulleye} width={40} height={40} alt={""}  />
+                 <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
                   Coffee
                 </Link>
               </DropdownMenuItem>
