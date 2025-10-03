@@ -1,0 +1,195 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.task-list-item::before {
+  @apply hidden;
+}
+
+.task-list-item {
+  @apply list-none;
+}
+
+.csl-entry {
+  @apply my-5;
+}
+
+body{
+  background-color:blue;
+}
+/* https://stackoverflow.com/questions/61083813/how-to-avoid-internal-autofill-selected-style-to-be-applied */
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+
+.bg-citrogreen {
+background-color: rgba(216, 255, 0, 1);
+
+}
+
+
+/* architects-daughter-regular - latin */
+@font-face {
+  font-family: "Architects Daughter";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("../public/fonts/ArchitectsDaughter/architects-daughter-v17-latin-regular.eot")
+      format("embedded-opentype"),
+    url("../public/fonts/ArchitectsDaughter/architects-daughter-v17-latin-regular.woff2")
+      format("woff2"),
+    url("../public/fonts/ArchitectsDaughter/architects-daughter-v17-latin-regular.woff")
+      format("woff"),
+    url("../public/fonts/ArchitectsDaughter/architects-daughter-v17-latin-regular.ttf")
+      format("truetype"),
+    url("../public/fonts/ArchitectsDaughter/architects-daughter-v17-latin-regular.svg")
+      format("svg");
+}
+
+/* BowlbyOneSC/-sc-regular - latin */
+@font-face {
+  font-family: "Bowlby One SC";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("../public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.eot")
+      format("embedded-opentype"),
+    url("../public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.woff2")
+      format("woff2"),
+    url("../public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.woff")
+      format("woff"),
+    url("../public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.ttf")
+      format("truetype"),
+    url("../public/fonts/BowlbyOneSC/bowlby-one-sc-v19-latin-regular.svg")
+      format("svg");
+}
+
+  team.filter(member => member.position == "developer")
+
+  .headingA {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #ffffff;
+  font-family: "Architects Daughter";
+}
+
+.headingB {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #ffcc00;
+  font-family: "Architects Daughter";
+}
+
+.headingC {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: orange;
+  font-family: "Architects Daughter";
+}
+
+.headingD {
+  -webkit-text-stroke-width: 0.66px;
+  -webkit-text-stroke-color: #595959;
+  font-family: "Architects Daughter";
+  font-weight: extrabold;
+}
+
+.headingE {
+  -webkit-text-stroke-width: 7.99px;
+  -webkit-text-stroke-color: #595959;
+  font-family: "Bowlby One SC";
+  font-weight: extrabold;
+}
+
+.headingF {
+  -webkit-text-stroke-width: 5.9px;
+  -webkit-text-stroke-color: #fffffc;
+  font-family: "Bowlby One SC";
+  font-weight: extrabold;
+}
+
+.navgrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(65px, 1fr));
+    grid-gap: 2vw;
+  }
+
+  .grid-container {
+    margin: 1em auto;
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+
+  .col{
+    flex: 100%;
+
+    @media only screen and (min-width: 31.375em)
+    {flex: 50%}
+
+    @media only screen and (min-width: 48em)
+    {flex: 33.3333%}
+  }
+
+  .grid-item  {
+    padding: 1rem;
+  }
+
+.modale{
+ width: 100%;
+ height: 15.625rem;
+ object-fit: cover;
+ object-position: 50% 50%;
+ cursor: pointer;
+
+
+ @media only screen and (min-width: 31.375em){
+ //height: 25rem;
+ }
+
+ @media only screen and (min-width: 81.25em){ 
+ height: 25rem;
+ }
+
+
+}
+
+.grid-sportarena{
+  position: flex;
+  flex-directon: flex-row;
+  flex-wrap: wrap;
+  grid-gap: 2vw;
+                    
+}
+
+#grid-rang {
+  
+  background-color: red;
+}
+
+#grid-gewonnen {
+  background-color: red;
+}
+
+#grid-verloren {
+
+
+}
+
+#grid-remis {
+
+}
+
+#grid-toregeschossen {
+
+}
+
+#grid-toreerhalten {
+  
+}
+
+#grid-punkte {
+
+  background-color: red;
+}
