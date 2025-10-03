@@ -151,7 +151,7 @@ export default function Navbar() {
             <nav className="flex flex-col gap-4 mt-8">
               <Link
                 href="/"
-                className="flex items-center gap-2 text-2xl uppercase font-medium hover:text-orange-500 transition-colors"
+                className="flex items-center gap-2 text-2xl uppercase font-medium hover:bg-orange-500 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                <Image src={Bulleye} width={40} height={40} alt={"Bulleye"}  />

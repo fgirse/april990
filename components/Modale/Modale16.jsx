@@ -12,6 +12,7 @@ import React, { useState, useEffect } from "react";
 import { container } from "tailwindcss/defaultTheme";
 import ArenaIlustration from "../../public/arena.js";
 import Image from "next/image";
+import logoDFL from "../../public/LogoDFL.png";
 
 export default function Modale16() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +43,7 @@ export default function Modale16() {
             >
               <div className="flex flex-col items-center">
                 <Image
-                  src="/logoDFL.png"
+                  src={logoDFL}
                   alt="icon"
                   width={120}
                   height={120}  
