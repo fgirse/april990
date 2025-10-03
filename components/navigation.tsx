@@ -10,10 +10,15 @@ import Image from "next/image";
 import Bulleye from "../public/bulleye.png";
 import Logo from "../public/LogoNeu.png";
 import Wood from "../public/Wood4.svg";
+import { useState } from "react";
 
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
+  // Dropdown states for mobile
+  const [aboutOpen, setAboutOpen] = useState(false);
+  const [drinksOpen, setDrinksOpen] = useState(false);
+  const [wohinOpen, setWohinOpen] = useState(false);
 
   return (
     <nav className="relative overflow-hidden">
@@ -103,22 +108,22 @@ export default function Navbar() {
              <Image src={Bulleye} width={40} height={40} alt={""}  />
               Team
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start">
+            <DropdownMenuContent align="start" className="bg-white w-52">
               <DropdownMenuItem asChild>
                 <Link href="/wohin/locations" className="flex items-center gap-2">
-                 <Image src={Bulleye} width={40} height={40} alt={""}  />
+                 <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
                   Locations
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/wohin/directions" className="flex items-center gap-2">
-                 <Image src={Bulleye} width={40} height={40} alt={""}  />
+                 <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
                   Directions
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/wohin/map" className="flex items-center gap-2">
-                 <Image src={Bulleye} width={40} height={40} alt={""}  />
+                 <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
                   Map
                 </Link>
               </DropdownMenuItem>
@@ -129,7 +134,7 @@ export default function Navbar() {
             href="/contact"
             className="flex items-center gap-2 text-2xl uppercase font-medium text-white hover:text-white transition-colors"
           >
-           <Image src={Bulleye} width={40} height={40} alt={""}  />
+           <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
             Wohin?
           </Link>
         </div>
@@ -146,118 +151,139 @@ export default function Navbar() {
             <nav className="flex flex-col gap-4 mt-8">
               <Link
                 href="/"
-                className="flex items-center gap-2 text-2xl uppercase font-medium hover:text-primary transition-colors"
+                className="flex items-center gap-2 text-2xl uppercase font-medium hover:text-orange-500 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                <Image src={Bulleye} width={40} height={40} alt={"Bulleye"}  />
                 Home
               </Link>
 
-              {/* About Section */}
+              {/* About Dropdown */}
               <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2 text-2xl uppercase font-semibold">
-                 <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
+                <button
+                  className="flex items-center gap-2 text-2xl uppercase font-semibold focus:outline-none"
+                  onClick={() => setAboutOpen((v) => !v)}
+                  aria-expanded={aboutOpen}
+                >
+                  <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
                   About
-                </div>
-                <div className="ml-6 flex flex-col gap-2">
-                  <Link
-                    href="/about/team"
-                    className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-primary"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
-                    Our Team
-                  </Link>
-                  <Link
-                    href="/about/history"
-                    className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-primary"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
-                    History
-                  </Link>
-                  <Link
-                    href="/about/mission"
-                    className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-primary"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
-                    Mission
-                  </Link>
-                </div>
+                  <span className="ml-auto">{aboutOpen ? '▲' : '▼'}</span>
+                </button>
+                {aboutOpen && (
+                  <div className="ml-6 flex flex-col gap-2">
+                    <Link
+                      href="/about/team"
+                      className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-orange-500"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
+                      Our Team
+                    </Link>
+                    <Link
+                      href="/about/history"
+                      className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-orange-500"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
+                      History
+                    </Link>
+                    <Link
+                      href="/about/mission"
+                      className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-orange-500"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
+                      Mission
+                    </Link>
+                  </div>
+                )}
               </div>
 
-              {/* Drinks Section */}
+              {/* Drinks Dropdown */}
               <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2 text-2xl uppercase font-semibold">
-                 <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
+                <button
+                  className="flex items-center gap-2 text-2xl uppercase font-semibold focus:outline-none"
+                  onClick={() => setDrinksOpen((v) => !v)}
+                  aria-expanded={drinksOpen}
+                >
+                  <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
                   Drinks
-                </div>
-                <div className="ml-6 flex flex-col gap-2">
-                  <Link
-                    href="/drinks/coffee"
-                    className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-yellow-6"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
-                    Coffee
-                  </Link>
-                  <Link
-                    href="/drinks/tea"
-                    className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-primary"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
-                    Tea
-                  </Link>
-                  <Link
-                    href="/drinks/juice"
-                    className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-primary"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
-                    Juice
-                  </Link>
-                </div>
+                  <span className="ml-auto">{drinksOpen ? '▲' : '▼'}</span>
+                </button>
+                {drinksOpen && (
+                  <div className="ml-6 flex flex-col gap-2">
+                    <Link
+                      href="/drinks/coffee"
+                      className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-yellow-6"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
+                      Coffee
+                    </Link>
+                    <Link
+                      href="/drinks/tea"
+                      className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-orange-500"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
+                      Tea
+                    </Link>
+                    <Link
+                      href="/drinks/juice"
+                      className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-orange-500"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
+                      Juice
+                    </Link>
+                  </div>
+                )}
               </div>
 
-              {/* Wohin Section */}
+              {/* Wohin Dropdown */}
               <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2 text-2xl uppercase font-semibold">
-                 <Image src={Bulleye} width={40} height={40} alt={""}  />
+                <button
+                  className="flex items-center gap-2 text-2xl uppercase font-semibold focus:outline-none"
+                  onClick={() => setWohinOpen((v) => !v)}
+                  aria-expanded={wohinOpen}
+                >
+                  <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
                   Wohin
-                </div>
-                <div className="ml-6 flex flex-col gap-2">
-                  <Link
-                    href="/wohin/locations"
-                    className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-primary"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
-                    Locations
-                  </Link>
-                  <Link
-                    href="/wohin/directions"
-                    className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-primary"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
-                    Directions
-                  </Link>
-                  <Link
-                    href="/wohin/map"
-                    className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-primary"
-                    onClick={() => setIsOpen(false)}
-                  >
-                   <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
-                    Map
-                  </Link>
-                </div>
+                  <span className="ml-auto">{wohinOpen ? '▲' : '▼'}</span>
+                </button>
+                {wohinOpen && (
+                  <div className="ml-6 flex flex-col gap-2">
+                    <Link
+                      href="/wohin/locations"
+                      className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-orange-500"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
+                      Locations
+                    </Link>
+                    <Link
+                      href="/wohin/directions"
+                      className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-orange-500"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
+                      Directions
+                    </Link>
+                    <Link
+                      href="/wohin/map"
+                      className="flex items-center gap-2 text-2xl uppercase transition-colors hover:text-orange-500"
+                      onClick={() => setIsOpen(false)}
+                    >
+                     <Image src={Bulleye} width={40} height={40} alt={"Bullauge"}  />
+                      Map
+                    </Link>
+                  </div>
+                )}
               </div>
 
               <Link
                 href="/contact"
-                className="flex items-center gap-2 text-2xl uppercase font-medium hover:text-primary transition-colors"
+                className="flex items-center gap-2 text-2xl uppercase font-medium hover:text-orange-500 transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                <Image src={Bulleye} width={40} height={40} alt={""}  />
