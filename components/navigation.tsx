@@ -8,7 +8,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { Sheet, SheetContent, SheetTrigger } from "../components/ui/sheet"
 import Image from "next/image";
 import Bulleye from "../public/bulleye.png";
-import Logo from "../public/logoneu.png";
+import Logo from "../public/lLogoNeu.png";
 import Wood from "../public/Wood4.svg";
 
 
