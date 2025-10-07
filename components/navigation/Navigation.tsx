@@ -64,8 +64,8 @@ const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWit
             )}
             {...props}
           >
-            <div className="text-sm font-medium leading-none">{title}</div>
-            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>
+            <div className="text-xl font-medium leading-none">{title}</div>
+            <p className="line-clamp-2 text-xl leading-snug text-muted-foreground">{children}</p>
           </a>
         </NavigationMenuLink>
       </li>
@@ -159,104 +159,108 @@ export default function Navigation() {
         {/* Mobile Navigation */}
         <div className="md:hidden flex items-center gap-2">
           {/* Debug indicator */}
-          <span className="text-xs bg-yellow-200 px-2 py-1 rounded">
+          <span className="text-xs bg-yellow-200 px-2 py-1 rounded text-black">
             {open ? "OPEN" : "CLOSED"}
           </span>
           
-          {/* Manual trigger button for testing */}
-          <Button
-            variant="outline"
-            size="icon"
-            className="bg-red-500 text-white border-2 border-red-600 hover:bg-red-600 z-50"
+          {/* Simple mobile menu button */}
+          <button
+            className="bg-blue-500 text-white p-2 rounded-md border-2 border-blue-600 hover:bg-blue-600"
             onClick={() => {
-              console.log("Manual button clicked! Current state:", open);
+              console.log("Simple button clicked! Current state:", open);
               setOpen(!open);
             }}
           >
             <Menu className="h-6 w-6" />
-          </Button>
+          </button>
           
-          <Sheet open={open} onOpenChange={setOpen}>
-            <SheetTrigger asChild>
-              <Button
-                variant="outline"
-                size="icon"
-                className="bg-white border-2 border-gray-300 hover:bg-gray-100 z-50"
-                onClick={() => console.log("Sheet trigger clicked!")}
+          {/* Conditional mobile menu overlay */}
+          {open && (
+            <div 
+              className="fixed inset-0 z-50 bg-black bg-opacity-50"
+              onClick={() => setOpen(false)}
+            >
+              <div 
+                className="fixed right-0 top-0 h-full w-[66vw] bg-white shadow-lg p-6"
+                onClick={(e) => e.stopPropagation()}
               >
-                <Menu className="h-6 w-6 text-black" />
-                <span className="sr-only">Toggle menu</span>
-              </Button>
-            </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-            <nav className="flex flex-col gap-4 mt-8">
-              <Link
-                href="/"
-                className="text-lg font-medium hover:text-primary transition-colors flex items-center gap-2"
-                onClick={() => setOpen(false)}
-              >
-                <Image src="/icons/bullseye.svg" alt="" width={16} height={16} className="w-4 h-4" />
-                Home
-              </Link>
+                {/* Close button */}
+                <button
+                  className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
+                  onClick={() => setOpen(false)}
+                >
+                  ✕
+                </button>
 
-              <div className="flex flex-col gap-2">
-                <span className="text-lg font-medium flex items-center gap-2">
-                  <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
-                  About
-                </span>
-                <div className="flex flex-col gap-2 ml-4">
-                  {aboutItems.map((item) => (
-                    <Link
-                      key={item.title}
-                      href={item.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                      onClick={() => setOpen(false)}
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
-                </div>
+                <nav className="flex flex-col gap-4 mt-8">
+                  <Link
+                    href="/"
+                    className="text-4xl font-medium hover:text-blue-600 transition-colors flex items-center gap-2 text-black"
+                    onClick={() => setOpen(false)}
+                  >
+                    <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
+                    Home
+                  </Link>
+
+                  <div className="flex flex-col gap-2">
+                    <span className="text-4xl font-medium flex items-center gap-2 text-black">
+                      <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
+                      About
+                    </span>
+                    <div className="flex flex-col gap-2 ml-4">
+                      {aboutItems.map((item) => (
+                        <Link
+                          key={item.title}
+                          href={item.href}
+                          className="text-xl text-gray-600 hover:text-blue-600 transition-colors"
+                          onClick={() => setOpen(false)}
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <span className="text-4xl font-medium flex items-center gap-2 text-black">
+                      <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
+                      Drinks & Snacks
+                    </span>
+                    <div className="flex flex-col gap-2 ml-4">
+                      {drinksSnacksItems.map((item) => (
+                        <Link
+                          key={item.title}
+                          href={item.href}
+                          className="text-xl text-gray-600 hover:bg-slate-200 hover:text-blue-600 transition-colors"
+                          onClick={() => setOpen(false)}
+                        >
+                          {item.title}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+
+                  <Link
+                    href="/sportarena"
+                    className="text-4xl font-medium hover:text-blue-600 transition-colors flex items-center gap-2 text-black"
+                    onClick={() => setOpen(false)}
+                  >
+                    <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
+                    Sportarena
+                  </Link>
+
+                  <Link
+                    href="/wohin"
+                    className="text-4xl font-medium hover:text-blue-600 transition-colors flex items-center gap-2 text-black"
+                    onClick={() => setOpen(false)}
+                  >
+                    <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
+                    Wohin?
+                  </Link>
+                </nav>
               </div>
-
-              <div className="flex flex-col gap-2">
-                <span className="text-lg font-medium flex items-center gap-2">
-                  <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
-                  Drinks & Snacks
-                </span>
-                <div className="flex flex-col gap-2 ml-4">
-                  {drinksSnacksItems.map((item) => (
-                    <Link
-                      key={item.title}
-                      href={item.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                      onClick={() => setOpen(false)}
-                    >
-                      {item.title}
-                    </Link>
-                  ))}
-                </div>
-              </div>
-
-              <Link
-                href="/sportarena"
-                className="text-lg font-medium hover:text-primary transition-colors flex items-center gap-2"
-                onClick={() => setOpen(false)}
-              >
-                <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
-                Sportarena
-              </Link>
-
-              <Link
-                href="/wohin"
-                className="text-lg font-medium hover:text-primary transition-colors flex items-center gap-2"
-                onClick={() => setOpen(false)}
-              >
-                <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
-                Wohin?
-              </Link>
-            </nav>
-          </SheetContent>
-        </Sheet>
+            </div>
+          )}
         </div>
       </div>
     </header>
