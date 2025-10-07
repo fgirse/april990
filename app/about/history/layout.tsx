@@ -17,11 +17,9 @@ interface IProps {
   children: ReactNode;
 }
 
-export async function generateMetadata(props: Omit<Props, 'children'>) {
-  const {locale} = await props.params;
-
-
-
+// Example function to get metadata, if needed
+export function generateMetadata() {
+  const locale = 'en'; // or get locale from props/context
   return {
     title: locale === 'en' ? 'Home' : 'Startseite'
   };
