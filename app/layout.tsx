@@ -16,29 +16,18 @@ interface IProps {
   children: ReactNode;
 }
 
-export async function generateMetadata(props: Omit<Props, 'children'>) {
-  const {locale} = await props.params;
 
-
-
-  return {
-    title: locale === 'en' ? 'Home' : 'Startseite'
-  };
-}
 
 interface Props {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: { locale: string };
 }
 
-export default function RootLayout({ children }: IProps) {
+export default function Layout({ children }: IProps) {
   return (
     <html lang="en">
       <body>
-        
-          
-        <body>{children}</body>
-        
+        {children}
       </body>
     </html>
   );
