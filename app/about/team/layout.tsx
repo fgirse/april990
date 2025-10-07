@@ -16,15 +16,9 @@ interface IProps {
   children: ReactNode;
 }
 
-export async function generateMetadata(props: Omit<Props, 'children'>) {
-  const {locale} = await props.params;
 
 
-
-  return {
-    title: locale === 'en' ? 'Home' : 'Startseite'
-  };
-}
+// Removed invalid function and closing brace
 
 interface Props {
   children: React.ReactNode;
