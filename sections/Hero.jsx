@@ -5,31 +5,14 @@ import { useEffect, useRef } from 'react';
 import styles from '../styles';
 import { slideIn, staggerContainer, textVariant } from '../utils/motion';
 import Image from 'next/image';
-import { Svg5555 } from '../components/Svg5555';
+
 
 const Hero = () => {
-  const audioRef = useRef(null);
-
-  useEffect(() => {
-    const svg = document.getElementById('svg5555');
-    const path = document.getElementById('rect15563');
-    if (!path) return;
-    const handleMouseOver = () => {
-      if (audioRef.current) {
-        audioRef.current.currentTime = 0;
-        audioRef.current.play().catch(() => {});
-      }
-    };
-    path.addEventListener('mouseover', handleMouseOver);
-    return () => {
-      path.removeEventListener('mouseover', handleMouseOver);
-    };
-  }, []);
 
   return (
     <section className={`${styles.yPaddings} mx-auto bg-hero relative top-[2vh] h-screen bg-no-repeat pl- lg:h-screen lg:bg-no-repeat lg:bg-right`}>
-      <audio ref={audioRef} src={typeof window !== 'undefined' ? '/das-badener-lied.mp3' : undefined} preload="auto" />
-      <motion.div
+    
+          <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
@@ -64,7 +47,7 @@ const Hero = () => {
 
           </motion.div>
         </motion.div>
-        <Svg5555 />
+        
       </section>
   );
 };

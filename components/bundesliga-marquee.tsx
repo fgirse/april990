@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Card } from "./ui/card"
+import { Card } from "../components/ui/card";
 import Image from "next/image"  
 import next from "next"
 interface TeamStanding {

@@ -1,35 +1,19 @@
 import * as React from "react"
 
-import {cn} from "../../lib/utils";
+import { cn } from "@/lib/utils";
 
-interface cardInterface {
-  title?: string;
-  content?: string;
-  img?: string;
-  color?: string;
-  children?: React.ReactNode; // Add this line
-  // Remove any card prop if it exists
-}
-
-const Card: React.FC<cardInterface> = React.forwardRef<
+const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, title, content, children }, ref) => (
+>(({ className, ...props }, ref) => (
   <div
     ref={ref}
     className={cn(
       "rounded-xl border bg-card text-card-foreground shadow",
       className
     )}
-  >
-    <div className="card-header">
-      <h3>{title}</h3>
-    </div>
-    <div className="card-content">
-      {content && <p>{content}</p>}
-      {children} {/* Render the children here */}
-    </div>
-  </div>
+    {...props}
+  />
 ))
 Card.displayName = "Card"
 

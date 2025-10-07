@@ -1,6 +1,6 @@
 import { Philosophy, Wohin, Event, Drinks, Team, Sportarena } from '../sections';
 import ScrollToTop from '../components/BackToTop/ScrollToTop.js';
-import Navigation from '../components/navigation';
+import Navigation from '../components/navigation/Navigation.tsx';
 import InfoBar from '../components/InfoBar';
 import {Hero} from '../sections';
 import {About} from '../sections';
@@ -17,7 +17,7 @@ export default function Page() {
           <About />
           <div className="gradient-03 z-0"></div>
           <Philosophy />
-        </div>
+        </div>                                                            
         <div className="relative">
           <Drinks />
           <ScrollToTop />
