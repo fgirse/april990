@@ -17,13 +17,7 @@ interface IProps {
   children: ReactNode;
 }
 
-// Example function to get metadata, if needed
-export function generateMetadata() {
-  const locale = 'en'; // or get locale from props/context
-  return {
-    title: locale === 'en' ? 'Home' : 'Startseite'
-  };
-}
+
 
 interface Props {
   children: React.ReactNode;
