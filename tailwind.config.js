@@ -92,7 +92,7 @@ module.exports = {
 
   plugins: [
     require('@headlessui/tailwindcss', 'tailwindcss-aspect-ratio' ,'tw-elements/dist/plugin.cjs',),
-      require("tailwindcss-animate")
+      require("tailwindcss-animate"),[require("flyonui")],
 ]
    
 };

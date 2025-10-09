@@ -22,7 +22,7 @@ interface Props {
   children: React.ReactNode;
   params: { locale: string };
 }
-
+300
 export default function Layout({ children }: IProps) {
   return (
     <html lang="en">

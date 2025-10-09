@@ -921,6 +921,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bentogrid/core@npm:^1.1.1":
+  version: 1.1.1
+  resolution: "@bentogrid/core@npm:1.1.1"
+  checksum: 10c0/07a151d59ba0b223e77b550a02e10b4fd4d8598bf63bdba8ccc0382ecc0ccb96b03aca1922bbc1b1ab131a35a0b72f9b192f7f135819d5dd8298712a0ceaeda9
+  languageName: node
+  linkType: hard
+
 "@cloudinary/transformation-builder-sdk@npm:^1.15.1":
   version: 1.21.2
   resolution: "@cloudinary/transformation-builder-sdk@npm:1.21.2"
@@ -1135,7 +1142,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/dom@npm:^1.7.4":
+"@floating-ui/dom@npm:^1.7.1, @floating-ui/dom@npm:^1.7.4":
   version: 1.7.4
   resolution: "@floating-ui/dom@npm:1.7.4"
   dependencies:
@@ -5292,6 +5299,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/nouislider@npm:^15.0.0":
+  version: 15.0.0
+  resolution: "@types/nouislider@npm:15.0.0"
+  dependencies:
+    nouislider: "npm:*"
+  checksum: 10c0/08c957dbc52440b55adb4b327f0042e7ea2bea07a326929af623b7a6dbff0400069f2d20f2598402febcdac6e6a3418061f43dcf993543b6ed8e0aa5b1b5733d
+  languageName: node
+  linkType: hard
+
 "@types/parse-json@npm:^4.0.0":
   version: 4.0.2
   resolution: "@types/parse-json@npm:4.0.2"
@@ -7705,6 +7721,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"flyonui@npm:^2.4.1":
+  version: 2.4.1
+  resolution: "flyonui@npm:2.4.1"
+  dependencies:
+    "@floating-ui/dom": "npm:^1.7.1"
+  checksum: 10c0/a36f45ef7c874e718438f899fef2b0d8cea13a8dad539f877fe5e4d08adcc8449a1f351fc47eb80c6ec9925e03730c6dfe58dc34361a15e37425b92e1785051d
+  languageName: node
+  linkType: hard
+
 "follow-redirects@npm:^1.15.6":
   version: 1.15.11
   resolution: "follow-redirects@npm:1.15.11"
@@ -9061,6 +9086,7 @@ __metadata:
     "@babel/core": "npm:^7.28.4"
     "@babel/preset-react": "npm:^7.27.1"
     "@babel/preset-typescript": "npm:^7.27.1"
+    "@bentogrid/core": "npm:^1.1.1"
     "@cloudinary/url-gen": "npm:^1.22.0"
     "@headlessui/react": "npm:^1.7.11"
     "@headlessui/tailwindcss": "npm:^0.1.3"
@@ -9104,6 +9130,7 @@ __metadata:
     "@types/jquery": "npm:^3.5.33"
     "@types/leaflet": "npm:^1.9.3"
     "@types/node": "npm:18.0.6"
+    "@types/nouislider": "npm:^15.0.0"
     "@types/react": "npm:^18.0.28"
     "@types/react-dom": "npm:18.0.6"
     "@vechaiui/core": "npm:^0.6.0"
@@ -9119,6 +9146,7 @@ __metadata:
     dotenv: "npm:^16.0.3"
     eslint: "npm:8.28.0"
     eslint-config-next: "npm:13.0.5"
+    flyonui: "npm:^2.4.1"
     formik: "npm:^2.2.9"
     framer-motion: "npm:^7.6.7"
     google-map-react: "npm:^2.2.0"
@@ -9663,6 +9691,13 @@ __metadata:
   dependencies:
     svg-arc-to-cubic-bezier: "npm:^3.0.0"
   checksum: 10c0/2e24e1d0a9ca7f172cec161d9c14fef616c57040664d82f6077d97c42e6e8a113f288dc0cb55e19fc4873baa0c5ddc7857d24d4a1b6df594924451d1adbb1b41
+  languageName: node
+  linkType: hard
+
+"nouislider@npm:*":
+  version: 15.8.1
+  resolution: "nouislider@npm:15.8.1"
+  checksum: 10c0/1e79a2fa2847084a36762de9b431104c83c5f5729b272e962291104f755c8235e92273ff9a4f9e866c34ae9eb2733b6bdc70e1e70701b39e4d172f1da98804e4
   languageName: node
   linkType: hard
 

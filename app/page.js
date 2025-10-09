@@ -5,6 +5,7 @@ import InfoBar from '../components/InfoBar';
 import {Hero} from '../sections';
 import {About} from '../sections';
 import Footer from '../components/Footer';
+import Bento from  '../sections/Bento'; 
 
 export default function Page() {
   return (
@@ -17,6 +18,10 @@ export default function Page() {
           <About />
           <div className="gradient-03 z-0"></div>
           <Philosophy />
+        </div>
+        <div className="relative">
+          <Bento />
+          <div className="gradient-04 z-0"></div>
         </div>                                                            
         <div className="relative">
           <Drinks />
