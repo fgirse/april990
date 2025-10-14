@@ -2,7 +2,7 @@ import * as React from "react";
 import { createPortal } from "react-dom";
 import { X } from "lucide-react";
 import { cn } from "../lib/utils";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, HTMLMotionProps } from "framer-motion";
 
 interface SheetContextValue {
   open: boolean;
@@ -170,9 +170,10 @@ const SheetOverlay = React.forwardRef<
 });
 SheetOverlay.displayName = "SheetOverlay";
 
-interface SheetContentProps
-  extends React.HTMLAttributes<HTMLDivElement> {
-  side?: "top" | "right" | "bottom" | "left";
+interface SheetContentProps extends Omit<HTMLMotionProps<"div">, "initial" | "animate" | "exit"> {
+  side?: "top" | "bottom" | "left" | "right";
+  className?: string;
+  children: React.ReactNode;
 }
 
 const sideVariants = {
@@ -198,92 +199,89 @@ const sideVariants = {
   },
 };
 
-const SheetContent = React.forwardRef<HTMLDivElement, SheetContentProps>(
+// Internal component that renders the sheet content
+const SheetContentInner = React.forwardRef<HTMLDivElement, SheetContentProps>(
   ({ side = "right", className, children, ...props }, ref) => {
-    const { open, setOpen } = React.useContext(SheetContext) || { open: false, setOpen: () => { } };
-    const contentLocalRef = React.useRef<HTMLDivElement | null>(null);
+    const { open, setOpen } = React.useContext(SheetContext) || { open: false, setOpen: () => {} };
 
-    const combinedRef = React.useCallback((node: HTMLDivElement | null) => {
-      contentLocalRef.current = node;
-      if (typeof ref === 'function') {
-        ref(node);
-      } else if (ref) {
-        (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
-      }
-    }, [ref]);
+    if (!open) return null;
 
-    React.useEffect(() => {
-      if (!open) return;
-
-      const handleMouseDown = (event: MouseEvent) => {
-        if (contentLocalRef.current && !contentLocalRef.current.contains(event.target as Node)) {
-          setOpen(false);
-        }
-      };
-
-      const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.key === 'Escape') {
-          setOpen(false);
-        }
-      };
-
-      document.addEventListener('mousedown', handleMouseDown);
-      document.addEventListener('keydown', handleKeyDown);
-
-      return () => {
-        document.removeEventListener('mousedown', handleMouseDown);
-        document.removeEventListener('keydown', handleKeyDown);
-      };
-    }, [open, setOpen]);
-
-    const {
-      onDrag: _,
-      onDragEnd: __,
-      onDragStart: ___,
-      onDragExit: ____,
-      onDragEnter: _____,
-      onDragLeave: ______,
-      onDragOver: _______,
-      onDrop: ________,
-      onAnimationStart: _________,
-      ...restProps
-    } = props;
-
-    return createPortal(
-      <AnimatePresence>
-        {open && (
-          <SheetPortal>
-            <SheetOverlay />
-            <motion.div
-              ref={combinedRef}
-              key="sheet-content"
-              initial={sideVariants[side].initial}
-              animate={sideVariants[side].animate}
-              exit={sideVariants[side].exit}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className={cn(
-                "fixed z-50 gap-4 bg-background p-6 shadow-lg",
-                side === "top" && "inset-x-0 top-0 border-b  border-gray-200 dark:border-gray-800/40",
-                side === "bottom" && "inset-x-0 bottom-0 border-t border-gray-200 dark:border-gray-800/40 ",
-                side === "left" && "inset-y-0 left-0 h-full w-3/4 border-r border-gray-200 dark:border-gray-800/40  sm:max-w-sm",
-                side === "right" && "inset-y-0 right-0 h-full w-3/4 border-l border-gray-200 dark:border-gray-800/40  sm:max-w-sm",
-                className
-              )}
-              {...restProps}
-            >
-              {children}
-              <SheetClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none">
-                <X className="h-4 w-4" />
-                <span className="sr-only">Close</span>
-              </SheetClose>
-            </motion.div>
-          </SheetPortal>
-        )}
-      </AnimatePresence>,
-      document.body
+    return (
+      <div className="fixed inset-0 z-50 flex">
+        <motion.div
+          className="absolute inset-0 bg-black/50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={() => setOpen(false)}
+        />
+        
+        <motion.div
+          ref={ref}
+          className={className}
+          {...sideVariants[side]}
+          transition={{ type: "spring", damping: 40, stiffness: 400 }}
+          {...props}
+        >
+          {children}
+        </motion.div>
+      </div>
     );
   }
 );
+
+SheetContentInner.displayName = "SheetContentInner";
+
+// Main component that handles the portal
+const SheetContent = React.forwardRef<HTMLDivElement, SheetContentProps>(
+  (props, ref) => {
+    const { open } = React.useContext(SheetContext) || { open: false };
+    const [mounted, setMounted] = React.useState(false);
+
+    React.useEffect(() => {
+      setMounted(true);
+    }, []);
+
+    if (!mounted || !open) {
+      return <div style={{ display: 'none' }} />;
+    }
+
+    function setOpen(arg0: boolean): void {
+      throw new Error("Function not implemented.");
+    }
+
+    return createPortal(
+      <AnimatePresence>
+        <div className="fixed inset-0 z-50 flex">
+          <motion.div
+            className="absolute inset-0 bg-black/50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setOpen(false)}
+          />
+          
+          <motion.div
+            className={props.className}
+            initial={sideVariants[props.side || "right"].initial}
+            animate={sideVariants[props.side || "right"].animate}
+            exit={sideVariants[props.side || "right"].exit}
+            transition={{ 
+              type: "spring", 
+              damping: 40, 
+              stiffness: 400 
+            }}
+            {...props}
+          >
+            {props.children}
+          </motion.div>
+        </div>
+      </AnimatePresence>,
+      document.body
+    ) as any; // Type assertion to satisfy forwardRef
+  }
+);
+
 SheetContent.displayName = "SheetContent";
 
 const SheetHeader = ({

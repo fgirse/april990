@@ -74,6 +74,13 @@ export function CountUp({
     return formatValue(latest, decimals, separator);
   });
 
+  const [display, setDisplay] = useState(() => formatValue(0, decimals, separator));
+
+  useEffect(() => {
+    const unsubscribe = rounded.onChange((v) => setDisplay(v));
+    return unsubscribe;
+  }, [rounded]);
+
   const animationConfig = {
     ...(animationStyles[animationStyle] as any),
     ease: easingFunctions[easing],
@@ -169,7 +176,7 @@ export function CountUp({
         style={colorScheme === "custom" && customColor ? { color: customColor } : undefined}
       >
         {prefix && <span className="mr-1 text-foreground">{prefix}</span>}
-        <motion.span className=" text-foreground">{rounded}</motion.span>
+        <motion.span className=" text-foreground">{display}</motion.span>
         {suffix && <span className="ml-1  text-foreground">{suffix}</span>}
       </motion.div>
     </div>

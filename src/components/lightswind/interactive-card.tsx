@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useMotionValue, useTransform, useMotionTemplate } from "framer-motion";
 import { cn } from "../lib/utils"; // Assuming cn is a utility for conditionally joining class names
 
@@ -52,7 +52,12 @@ export const InteractiveCard = ({
   const xPercentage = useTransform(x, (val) => `${val * 100}%`);
   const yPercentage = useTransform(y, (val) => `${val * 100}%`);
 
-  const interactiveBackground = useMotionTemplate`radial-gradient(circle at ${xPercentage} ${yPercentage}, ${InteractiveColor} 0%, transparent 80%)`;
+  const interactiveColorMV = useMotionValue(InteractiveColor);
+  useEffect(() => {
+    interactiveColorMV.set(InteractiveColor);
+  }, [InteractiveColor, interactiveColorMV]);
+
+  const interactiveBackground = useMotionTemplate`radial-gradient(circle at ${xPercentage} ${yPercentage}, ${interactiveColorMV} 0%, transparent 80%)`;
 
   return (
     <motion.div

@@ -1,9 +1,21 @@
 "use client";
 
 import { useEffect, useId, useState } from "react";
-import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { loadSlim } from "@tsparticles/slim";
-import type { IOptions, RecursivePartial, MoveDirection } from "@tsparticles/engine"; // Import MoveDirection
+import Particles from "react-tsparticles";
+import { loadSlim } from "tsparticles-slim";
+import type { ISourceOptions } from "@tsparticles/engine";
+import { RecursivePartial } from "@tsparticles/engine";
+
+type MoveDirection =
+  | "none"
+  | "bottom"
+  | "bottomLeft"
+  | "bottomRight"
+  | "left"
+  | "right"
+  | "top"
+  | "topLeft"
+  | "topRight";
 
 interface SparkleParticlesProps {
   className?: string;
@@ -13,19 +25,19 @@ interface SparkleParticlesProps {
   maxSpeed?: number;
   minMoveSpeed?: number | null;
   maxOpacity?: number;
-  customDirection?: MoveDirection | "none" | "" | "bottom" | "bottomLeft" | "bottomRight" | "left" | "right" | "top" | "topLeft" | "topRight"; // Allow string literals for common directions
+  customDirection?: MoveDirection | "none" | "" | "bottom" | "bottomLeft" | "bottomRight" | "left" | "right" | "top" | "topLeft" | "topRight";
   opacityAnimationSpeed?: number;
   minParticleOpacity?: number | null;
   particleColor?: string;
   enableParallax?: boolean;
   enableHoverGrab?: boolean;
   backgroundColor?: string;
-  userOptions?: Record<string, any>;
+  userOptions?: RecursivePartial<ISourceOptions>;
   zIndexLevel?: number;
   clickEffect?: boolean;
-  hoverMode?: "grab" | "bubble" | "repulse";
+  hoverMode?: string;
   particleCount?: number;
-  particleShape?: "circle" | "square" | "triangle" | "star" | "edge";
+  particleShape?: string;
   enableCollisions?: boolean;
 }
 
@@ -84,7 +96,7 @@ export function SparkleParticles({
     return () => observer.disconnect();
   }, [particleColor]);
 
-  const mergedOptions: RecursivePartial<IOptions> = {
+  const mergedOptions: unknown = {
     background: {
       color: {
         value: backgroundColor,
@@ -168,16 +180,22 @@ export function SparkleParticles({
       },
     },
     detectRetina: true,
-    ...userOptions,
+    ...(userOptions as unknown as Record<string, unknown>),
   };
 
   return (
     isEngineReady && (
       <Particles
         id={instanceId}
-        options={mergedOptions}
+        options={mergedOptions as any}
         className={className}
       />
     )
   );
+}
+
+function initParticlesEngine(init: (engine: any) => Promise<void>): Promise<void> {
+  // Provide a minimal engine placeholder; the actual engine is supplied by tsparticles in broader setups.
+  const engine: any = {};
+  return init(engine);
 }

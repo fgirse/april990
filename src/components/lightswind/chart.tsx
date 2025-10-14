@@ -1,5 +1,6 @@
 import * as React from "react"
 import * as RechartsPrimitive from "recharts"
+import { TooltipProps } from "recharts"
 
 import { cn } from "../lib/utils"
 
@@ -100,15 +101,81 @@ ${colorConfig
 
 const ChartTooltip = RechartsPrimitive.Tooltip
 
+interface CustomTooltipProps extends TooltipProps<any, any> {
+  payload?: any[]
+  hideIndicator?: boolean
+  labelFormatter?: (value: any) => string
+  labelClassName?: string
+  formatter?: (value: any, name: string) => [string, string]
+  color?: string
+  nameKey?: string
+  labelKey?: string
+}
+
+const CustomTooltip = React.forwardRef<
+  HTMLDivElement,
+  CustomTooltipProps
+>(
+  (
+    {
+      active,
+      payload,
+      hideIndicator = false,
+      labelFormatter,
+      labelClassName,
+      formatter,
+      color,
+      nameKey,
+      labelKey,
+    },
+    ref
+  ) => {
+    // Access label from the payload or use a default approach
+    const label =
+      payload?.[0]?.payload?.[labelKey || "label"] ||
+      payload?.[0]?.payload?.name ||
+      "No label"
+
+    if (!active || !payload || !payload.length) {
+      return null
+    }
+
+    return (
+      <div ref={ref} className="tooltip-container">
+        {!hideIndicator && (
+          <div className={labelClassName}>
+            {labelFormatter ? labelFormatter(label) : label}
+          </div>
+        )}
+        {/* Rest of your tooltip content */}
+      </div>
+    )
+  }
+)
+
+CustomTooltip.displayName = "CustomTooltip"
+
 const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<typeof RechartsPrimitive.Tooltip> &
     React.ComponentProps<"div"> & {
+      payload?: any[]
       hideLabel?: boolean
       hideIndicator?: boolean
       indicator?: "line" | "dot" | "dashed"
       nameKey?: string
       labelKey?: string
+      label?: any
+      labelFormatter?: (value: any, payload?: any) => React.ReactNode
+      labelClassName?: string
+      formatter?: (
+        value: any,
+        name: string,
+        item?: any,
+        index?: number,
+        payload?: any
+      ) => React.ReactNode
+      color?: string
     }
 >(
   (
@@ -258,11 +325,12 @@ const ChartLegend = RechartsPrimitive.Legend
 
 const ChartLegendContent = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<"div"> &
-    Pick<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
-      hideIcon?: boolean
-      nameKey?: string
-    }
+  React.ComponentProps<"div"> & {
+    payload?: any[]
+    verticalAlign?: "top" | "bottom" | "middle"
+    hideIcon?: boolean
+    nameKey?: string
+  }
 >(
   (
     { className, hideIcon = false, payload, verticalAlign = "bottom", nameKey },
@@ -270,7 +338,7 @@ const ChartLegendContent = React.forwardRef<
   ) => {
     const { config } = useChart()
 
-    if (!payload?.length) {
+    if (!Array.isArray(payload) || payload.length === 0) {
       return null
     }
 

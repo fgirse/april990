@@ -58,7 +58,8 @@ export function VideoText({
   const validTags = ["div", "span", "section", "article", "p", "h1", "h2", "h3", "h4", "h5", "h6"] as const;
   type ValidTag = (typeof validTags)[number];
 
-  const MotionComponent = motion[validTags.includes(as) ? as : "div"] as React.ElementType;
+  // Cast to a loose component type to avoid incorrect 'children' inference from framer-motion's indexed access
+  const MotionComponent = motion[(validTags.includes(as as ValidTag) ? (as as ValidTag) : "div")] as unknown as React.ComponentType<any>;
 
   if (!svgMask) {
     return (

@@ -7,6 +7,9 @@ import { motion } from "framer-motion";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 
+// Cast to a React component type to satisfy TypeScript's JSX ElementClass requirement
+const PrismSyntaxHighlighter = SyntaxHighlighter as unknown as React.ComponentType<any>;
+
 type TerminalCardProps = {
   command: string;
   language?: string;
@@ -71,16 +74,14 @@ const TerminalCard: React.FC<TerminalCardProps> = ({ command, language = "tsx", 
         </button>
       </div>
 
-      {/* Content with Syntax Highlighting */}
-      <div className="rounded-b-lg text-sm font-mono p-3 bg-black text-white dark:bg-black max-h-[300px] overflow-auto">
         {isComplete ? (
-          <SyntaxHighlighter
+          <PrismSyntaxHighlighter
             language={language}
             style={oneDark}
             customStyle={{ background: "transparent", margin: 0, padding: 0 }}
           >
             {command}
-          </SyntaxHighlighter>
+          </PrismSyntaxHighlighter>
         ) : (
           <motion.pre className="whitespace-pre-wrap">
             {displayedText}
@@ -91,7 +92,6 @@ const TerminalCard: React.FC<TerminalCardProps> = ({ command, language = "tsx", 
             />
           </motion.pre>
         )}
-      </div>
     </div>
   );
 };
