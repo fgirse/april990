@@ -191,6 +191,14 @@ input:-webkit-autofill:focus {
   width: 100%;
 }
 
+.bg-hero {
+  background-image: url("/5555.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+}
+
 .bg-wohin {
   background-image: linear-gradient(
     to bottom,
@@ -238,7 +246,7 @@ input:-webkit-autofill:focus {
 .grid-item-overlay-1760057632942 {  /* Grid 7 */
   grid-column: 1;
   grid-row: auto;
-  background: #4ca06a;
+  background: #59636f;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   padding: 1rem;
@@ -270,7 +278,7 @@ input:-webkit-autofill:focus {
 .grid-item-overlay-1760057846834 {  /* Grid 9 */
   grid-column: 1;
   grid-row: auto;
-  background: #1d0456;
+  background: #1a232e;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   padding: 1rem;
@@ -302,7 +310,7 @@ input:-webkit-autofill:focus {
 .grid-item-overlay-1760057865523 {  /* Grid 12 */
   grid-column: 1;
   grid-row: auto;
-  background: #e0e7ff;
+  background: #38475a;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   padding: 1rem;
@@ -334,7 +342,7 @@ input:-webkit-autofill:focus {
 .grid-item-overlay-1760057918272 {  /* Grid 20 */
   grid-column: 1;
   grid-row: auto;
-  background: #ffedd5;
+  background: #610303;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   padding: 1rem;
@@ -366,7 +374,7 @@ input:-webkit-autofill:focus {
 .grid-item-overlay-1760057948843 {  /* Grid 23 */
   grid-column: 1;
   grid-row: auto;
-  background: #dcfce7;
+  background: #32373d;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   padding: 1rem;
