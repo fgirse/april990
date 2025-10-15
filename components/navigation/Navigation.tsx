@@ -220,7 +220,7 @@ export default function Navigation() {
                     className="text-4xl font-medium hover:text-blue-600 transition-colors flex items-center gap-2 text-black"
                     onClick={() => setOpen(false)}
                   >
-                    <Image src={Bulleye} alt="" width={300} height={300} className="w-20 h-20" />
+                    <Image src={Bulleye} alt="" width={100} height={100} className="w-20 h-20" />
                     Home
                   </Link>
 
@@ -230,7 +230,7 @@ export default function Navigation() {
                       onClick={() => setAboutDropdown(!aboutDropdown)}
                     >
                       <div className="flex items-center gap-2">
-                        <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
+                        <Image src={Bulleye} alt="" width={100} height={100} className="w-4 h-4" />
                         About
                       </div>
                       <ChevronDown 
@@ -261,7 +261,7 @@ export default function Navigation() {
                       onClick={() => setDrinksDropdown(!drinksDropdown)}
                     >
                       <div className="flex items-center gap-2">
-                        <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
+                        <Image src={Bulleye} alt="" width={100} height={100} className="w-4 h-4" />
                         Drinks & Snacks
                       </div>
                       <ChevronDown 
@@ -291,7 +291,7 @@ export default function Navigation() {
                     className="text-4xl font-medium hover:text-blue-600 transition-colors flex items-center gap-2 text-black"
                     onClick={() => setOpen(false)}
                   >
-                    <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
+                    <Image src={Bulleye} alt="" width={100} height={100} className="w-4 h-4" />
                     Sportarena
                   </Link>
 
@@ -300,7 +300,7 @@ export default function Navigation() {
                     className="text-4xl font-medium hover:text-blue-600 transition-colors flex items-center gap-2 text-black"
                     onClick={() => setOpen(false)}
                   >
-                    <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
+                    <Image src={Bulleye} alt="" width={100} height={100} className="w-4 h-4" />
                     Wohin?
                   </Link>
                 </nav>
