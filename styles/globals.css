@@ -191,12 +191,45 @@ input:-webkit-autofill:focus {
   width: 100%;
 }
 
-.bg-hero {
-  background-image: url("/5555.svg");
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 100%;
+bg-hero{
+
+  background-image: linear-gradient(
+
+    to bottom,
+
+    rgba(25, 36, 45, 1),
+
+    rgba(0, 0, 255, 0)
+
+, rgba(25,36,45,1)  ), url("/lighthouse.png");
+
+  background-size: 100% 100%;
+
+  background-repeat: no repeat;
+
+  height: 10%;
+
   width: 100%;
+
+}
+
+
+@media (min-width: 890px) {
+
+	.bg-hero{
+
+    background-image: linear-gradient(
+
+      to bottom,
+
+      rgba(25, 36, 45, 1),
+
+      rgba(0, 0, 255, 0)
+
+  , rgba(25,36,45,1)  ), url("/5566.svg");
+
+  }
+
 }
 
 .bg-wohin {
@@ -390,7 +423,7 @@ input:-webkit-autofill:focus {
 .grid-item-overlay-1760057999319 {  /* Grid 31 */
   grid-column: 1;
   grid-row: auto;
-  background: #f3e8ff;
+  background: #554a64;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   padding: 1rem;
@@ -422,7 +455,7 @@ input:-webkit-autofill:focus {
 .grid-item-overlay-1760058017913 {  /* Grid 34 */
   grid-column: 1;
   grid-row: auto;
-  background: #fce7f3;
+  background: #a47207;
   border-radius: 8px;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   padding: 1rem;

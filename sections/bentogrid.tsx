@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Bento: React.FC = () => {
+const Bento = () => {
   const overlayIds = [
     '1760057918272',
     '1760057942145', 

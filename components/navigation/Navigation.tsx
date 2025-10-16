@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { Menu, ChevronDown } from "lucide-react"
+import { Menu, ChevronDown, X } from "lucide-react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -120,15 +120,15 @@ export default function Navigation() {
             <NavigationMenuItem>
               <Link href="/" legacyBehavior passHref>
                 <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-2xl text-white uppercase flex items-center gap-2")}>
-                  <Image src="/Bullseye.svg" alt="" width={300} height={300} className="w-20 h-20" />
+                  <Image src={Bulleye} alt="" width={100} height={100} className="w-20 h-20" />
                   Home
                 </NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="flex items-center gap-2">
-                <Image src="/Bulleye" alt="" width={16} height={16} className="w-4 h-4" />
+              <NavigationMenuTrigger className="text-white uppercase text-2xl flex items-center gap-5 w-60">
+                <Image src={Bulleye} alt="" width={100} height={100} className="w-20 h-20" />
                 About
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -143,8 +143,8 @@ export default function Navigation() {
             </NavigationMenuItem>
 
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="flex items-center gap-2">
-                <Image src={Bulleye} alt="" width={16} height={16} className="w-4 h-4" />
+              <NavigationMenuTrigger className="text-white uppercase text-2xl flex items-center gap-5 w-60">
+                <Image src={Bulleye} alt="" width={100} height={100} className="w-20 h-20" />
                 Drinks & Snacks
               </NavigationMenuTrigger>
               <NavigationMenuContent>
@@ -160,8 +160,8 @@ export default function Navigation() {
 
             <NavigationMenuItem>
               <Link href="/sportarena" legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "flex items-center gap-2")}>
-                  <Image src="/icons/bullseye.svg" alt="" width={16} height={16} className="w-4 h-4" />
+                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "text-white uppercase text-2xl flex items-center gap-5 w-60")}>
+                  <Image src={Bulleye} alt="" width={100} height={100} className="w-20 h-20" />
                   Sportarena
                 </NavigationMenuLink>
               </Link>
@@ -169,8 +169,8 @@ export default function Navigation() {
 
             <NavigationMenuItem>
               <Link href="/wohin" legacyBehavior passHref>
-                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "flex items-center gap-2 text-2xl text-white uppercasea")}>
-                  <Image src="/icons/bullseye.svg" alt="" width={16} height={16} className="w-4 h-4" />
+                <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "flex items-center gap-2 text-2xl text-white uppercase w-60 hover:bg-yellow-500")}>
+                  <Image src={Bulleye} alt="" width={100} height={100} className="w-20 h-20" />
                   Wohin?
                 </NavigationMenuLink>
               </Link>
@@ -193,7 +193,7 @@ export default function Navigation() {
               setOpen(!open);
             }}
           >
-            <Menu className="h-6 w-6" />
+            <Menu className="h-8 w-8" />
           </button>
           
           {/* Conditional mobile menu overlay */}
@@ -202,25 +202,26 @@ export default function Navigation() {
               className="fixed inset-0 z-50 bg-black bg-opacity-50"
               onClick={() => setOpen(false)}
             >
-              <div 
-                className="fixed right-0 top-0 h-full w-[66vw] bg-white shadow-lg p-6"
+              <div
+                className="fixed right-0 top-0 h-full w-[66vw] bg-red-500 shadow-lg p-6"
                 onClick={(e) => e.stopPropagation()}
               >
                 {/* Close button */}
                 <button
-                  className="absolute top-4 right-4 text- hover:text-gray-700"
+                  aria-label="Close menu"
+                  className="absolute top-4 right-4 text-black hover:text-gray-700 hover:bg-red-500 rounded-full p-2 transition-colors"
                   onClick={() => setOpen(false)}
                 >
-                  ✕
+                  ×
                 </button>
 
-                <nav className="flex flex-col gap-4">
+                <nav className="mt-[12vh] flex flex-col gap-4">
                   <Link
                     href="/"
                     className="text-4xl font-medium hover:text-blue-600 transition-colors flex items-center gap-2 text-black"
                     onClick={() => setOpen(false)}
                   >
-                    <Image src={Bulleye} alt="" width={100} height={100} className="w-20 h-20" />
+                    <Image src={Bulleye} alt="" width={100} height={100} className="w-12 h-12" />
                     Home
                   </Link>
 
@@ -230,7 +231,7 @@ export default function Navigation() {
                       onClick={() => setAboutDropdown(!aboutDropdown)}
                     >
                       <div className="flex items-center gap-2">
-                        <Image src={Bulleye} alt="" width={100} height={100} className="w-4 h-4" />
+                        <Image src={Bulleye} alt="" width={100} height={100} className="w-12 h-12" />
                         About
                       </div>
                       <ChevronDown 
@@ -245,7 +246,7 @@ export default function Navigation() {
                           <Link
                             key={item.title}
                             href={item.href}
-                            className="text-xl text-gray-600 hover:text-blue-600 hover:bg-gray-100 p-2 rounded transition-colors"
+                            className="text-xl text-gray-600 hover:text-blue-600 hover:bg-yellow-600 p-2 rounded transition-colors"
                             onClick={() => setOpen(false)}
                           >
                             {item.title}
@@ -261,7 +262,7 @@ export default function Navigation() {
                       onClick={() => setDrinksDropdown(!drinksDropdown)}
                     >
                       <div className="flex items-center gap-2">
-                        <Image src={Bulleye} alt="" width={100} height={100} className="w-4 h-4" />
+                        <Image src={Bulleye} alt="" width={100} height={100} className="w-12 h-12" />
                         Drinks & Snacks
                       </div>
                       <ChevronDown 
@@ -291,16 +292,16 @@ export default function Navigation() {
                     className="text-4xl font-medium hover:text-blue-600 transition-colors flex items-center gap-2 text-black"
                     onClick={() => setOpen(false)}
                   >
-                    <Image src={Bulleye} alt="" width={100} height={100} className="w-4 h-4" />
+                    <Image src={Bulleye} alt="" width={100} height={100} className="w-12 h-12" />
                     Sportarena
                   </Link>
 
                   <Link
                     href="/wohin"
-                    className="text-4xl font-medium hover:text-blue-600 transition-colors flex items-center gap-2 text-black"
+                    className="text-4xl font-medium hover:text-blue-600 hover:bg-slate-300 transition-colors flex items-center gap-2 text-black"
                     onClick={() => setOpen(false)}
                   >
-                    <Image src={Bulleye} alt="" width={100} height={100} className="w-4 h-4" />
+                    <Image src={Bulleye} alt="" width={100} height={100} className="w-12 h-12" />
                     Wohin?
                   </Link>
                 </nav>

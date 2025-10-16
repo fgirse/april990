@@ -76,9 +76,9 @@ export default function Example() {
              <div className="mt-[5vh] flex flex-col items-center space-x-4 justify-center">
           <Image src="/Crowdparty.png" alt="CocktailIcon" width={600} height={200} />
         </div>
-        <h1 className="text-6xl mt-[5vh] text-center headingA text-yellow-500 lg:text-7xl">Event</h1>
+        <h1 className="text-6xl mt-[5vh] text-center headingA text-yellow-500 lg:text-7xl">Party? Event?</h1>
         <h2 className="text-4xl text-center text-white lg:text-4xl mt-[3vh]">
-        Privat oder Business-Event? Der perfekte Ort für Ihre Veranstaltung.
+        Der Rettungsanker ist die ideale Location für Ihren privaten oder Business Event. Im Rahmen einer "gesckossenen Gesellschaft" stehen Ihnen die Räumlichkeiten des Rettungsankers zur Verfügung. Auf Wunsch Catering durch unseren Kooperationspartner möglich ! Sprechen Sie uns an oder kontaktieren Sie uns per e.mail.
         </h2>
       </div>
       <div className="grid-item-overlay-1760058011364">
@@ -86,11 +86,11 @@ export default function Example() {
       </div>
       <div className="grid-item-overlay-1760058017913">
              <div className="mt-[5vh] flex flex-col items-center space-x-4 justify-center">
-          <Image src="/Albers-white.png" alt="CocktailIcon" width={175} height={175} />
+          <Image src="/Albers-white.png" alt="CocktailIcon" width={275} height={275} />
         </div>
         <h1 className="mt-[5vh] text-6xl text-center headingA text-yellow-500 lg:text-7xl">Hans Albers</h1>
         <h2 className="text-4xl text-center text-white lg:text-4xl mt-[3vh]">
-          Erleben Sie unsere kreativen Cocktails und erfrischenden Longdrinks, die mit hochwertigen Spirituosen und frischen Zutaten zubereitet werden.
+          Hans Phillip August Albers (* 22.September 1891 in Hamburg , 24. Juli 1960 in Berg, Bayern) war ein deutscher Schauspieler und Sänger, der als "blonder Hans" Volkssidol wurde. Zu den bekanntesten Spielfilmen in denen er mitwirkte gehören "der Mann, der Sherlock Holmes war" (1937), "Münchhausen" (1943), "die grosse Freiheit Nr.7" (1943) sowie "Auf fer Reeperbahn Nachts um halb eins
         </h2>
       </div>
       <div className="grid-item-overlay-1760058026843"></div>
